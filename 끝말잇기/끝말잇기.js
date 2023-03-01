@@ -14,6 +14,7 @@ const onBtnClick = () => {
         word = newWord;//1. 입력한 단어가 제시어가 된다.
         $word.textContent = word;//2. 화면에 단어가 제시어로 나온다.
         $input.value = '';//input은 비어진다.
+        $input.focus();
     } else{
         //비어있지 않다 ->판단필요
         //함수안에 함수
@@ -23,6 +24,7 @@ const onBtnClick = () => {
     { word = newWord;
         $word.textContent = word;
         $input.value = '';
+        $input.focus();
     }
         //올바르다, 게임 계속
     else {
