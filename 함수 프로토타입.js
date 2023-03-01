@@ -79,6 +79,37 @@ function sum(){
 }
 console.log(sum(2,4,1)); //7
 
+//고차함수
+const func4 = (msg) => {
+  return () => {
+    console.log(msg);
+  };
+};
+
+//위랑 같은 함수
+//return()은 생략이 가능한 함수
+const func5 = (msg) => () => {
+console.log(msg);
+};
+
+const innerFunc1 = func4('hello');
+innerFunc1(); //"hello"
+const innerFunc3 = func4();
+innerFunc3(); //undefined;
+
+//휠하고 드래그하면 휠이 길어짐 -> 여러개 수정이 가능함.
+
+event.target.textContent는 //이벤트가 일어난 타겟에 써져있는 content의 값을 불러옴
+
+const hof = (a) => (b) => (c) => {
+  return a + (b * c);
+}
+const first =  hof(3);
+const second = first(2);
+const third = second(4);
+console.log(third); //3+(2*4)=11;
+
+
 // 프로토타입
 function Circle(radius){
   this.radius = radius;
