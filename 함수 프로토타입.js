@@ -35,8 +35,16 @@ person.name = 'lee';
 person.job = 'singer';
 console.log(person);
 
+//결과 : 
+//const person = new Object();
+// person.name = 'lee';
+// person.job = 'singer';
+// console.log(person);
+
+
 const arr = new Array(1,2,3);
 console.log(arr);
+//결과 : [1,2,3]
 
 //생성자 함수 : 인스턴스를 생성기 위한 탬플릿처럼 사용, 여러개의 객체를 간편하게 생성가능
 function Circle(radius){
@@ -48,9 +56,9 @@ function Circle(radius){
 
 //생성자함수 - 인스턴스의 형성(new를 써주어야 한다. )
 const circle_1 = new Circle(4);
-const circle_2 = new Circle(9);
-console.log(circle_1.radius);
-console.log(circle_2.getDiameter());
+const circle_2 = new Circle(9); 
+console.log(circle_1.radius); //결과 : 4
+console.log(circle_2.getDiameter()); //결과 : 18
 
 //argument(인수)
 function multiply(x,y){
@@ -67,11 +75,13 @@ console.log(multiply(1,2,4,5));
 //   "2": 4,
 //   "3": 5
 // }
+// 결과2 : 2 //x * y = 1 * 2 =2
 
 // arguments(s주의)는 유사배열객체,for문 사용 가능.
 //그러나 배열특성을 모두가지지x
 function sum(){
   let res = 0;
+  
   for(let i = 0; i < arguments.length;i++){
     res += arguments[i]; //인덱스사용가능
   }
@@ -93,7 +103,7 @@ console.log(msg);
 };
 
 const innerFunc1 = func4('hello');
-innerFunc1(); //"hello"
+innerFunc1(); //"hello" //()은 함수즉시실행.console.log가 함수에 있으므로 사용할 필요가 x
 const innerFunc3 = func4();
 innerFunc3(); //undefined;
 
@@ -114,7 +124,8 @@ console.log(third); //3+(2*4)=11;
 function Circle(radius){
   this.radius = radius;
 }
-//프로토타입으로 함수 생성
+//프로토타입으로 함수 생성: Cricle이라는 함수의 프로토타입을 생성. 프로토타입은 getArea라는 함수임. 이는 Circle로 생성한 인스턴스가
+//모두 공유하는 프로퍼티가 됨.
 Circle.prototype.getArea = function(){
   return Math.PI * this.radius ** 2;
 };
