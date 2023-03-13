@@ -1,3 +1,36 @@
+//일반 생성자 함수
+const flower = function(name,color){
+  this.name = name;
+  this.color = color;
+  this.showName = function(){
+    console.log(`this flower name is ${this.name}`);
+  }
+}
+const rose = new flower('rose','red');
+console.log(rose.name);//"rose"
+console.log(rose.color);//"red"
+rose.showName();//"this flower name is rose"
+
+
+
+//class 
+class flower {
+  constructor(name,color){
+    this.name = name;
+    this.color = color;
+  }
+  showName(){
+console.log(`this flower name is ${this.name}`)}
+};
+
+const lilly = new flower('lilly','white');
+console.log(lilly.name);"lilly"
+console.log(lilly.color);"white"
+lilly.showName();"this flower name is lilly"
+
+//또다른 예시
+
+
 class Shape{
   constructor(height, width){
     this.height = height;
