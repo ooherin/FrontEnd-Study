@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="text">아이스크림</h1>
+    <p class="text">아이스크림의 역사</p>
+    <p class="text">아이스크림의 유래</p>
+
+    <div class="box1">
+        <p class="item">메로나</p>
+        <p class="item">바밤바</p>
+    </div>
+<script>
+    //메서드로 노드 선택하기  : get 메서드
+    const title = document.getElementById('text');
+    const classE1 = document.getElementsByClassName('text');
+    console.log(classE1[0]);   //<p class="text">아이스크림의 역사</p>
+    console.log(classE1[1]);   //<p class=​"text">​아이스크림의 역사​</p>​
+    const pTags = document.getElementsByTagName('p');
+    console.log(pTags[0]);   //<p class="text">아이스크림의 역사</p>
+    console.log(pTags[1]);   //<p class=​"text">​아이스크림의 역사​</p>​
+
+
+    //메서드로 노드 선택하기  : query 메서드
+    const box = document.querySelector(".box1");
+    console.log(box);
+    const items = document.querySelectorAll(".item");
+    console.log(items); //NodeList(2)
+    //querySelectorAll은 노드리스트에 담아 반환함
+    //query메서드를 쓰는 것이 더 낫다. 
+
+
+</script>
+</body>
+</html>

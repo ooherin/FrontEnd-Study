@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 조작하기</title>
+    <style>
+        .active{
+            color: white;
+            background-color: pink;
+            font-size: 20px;
+            font-weight: 50;
+        }
+        .toggle_css{
+            background-color: black;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <p id="title">hello, 
+        <span style="display:none;">javascript!</span></p>
+
+    <p id="textContent"></p>
+    <p id="innerText"></p>
+    <p id="innerHTML"></p>
+    
+    <p id = "red">text</p>
+
+    <!--여러개의 css속성 js로 주기-->
+    <p id="change">안녕하세요!</p>
+    <button id="changebtn">css적용버튼</button>
+    <button id="changebtn2">css취소버튼</button>
+
+    <!--toggle메서드는 add remove반복호출 -->
+    <p id="toggle">토글 메서드 적용</p>
+</body>
+<script>
+    const one = document.getElementById("title").textContent;
+    const two = document.getElementById("title").innerText;
+    const three = document.getElementById("title").innerHTML;
+    console.log(one); //hello javascript! : 모든 문자를 인식
+    console.log(two); //hello : 안에 있는 문자만 인식
+    console.log(three); //hello, :안에있는 문자를 모두 '문자 그대로'인식
+                       //<span style="display:none;">javascript!</span>
+
+    //콘텐츠 조작 속성을 통해 속성에 값을 할당하기
+    document.querySelector("#textContent").textContent = `<strong>textContent</strong>`;
+    document.querySelector("#innerText").innerText = `<strong>innerText</strong>`;
+    document.querySelector("#innerHTML").innerHTML = `<strong>innerHTML</strong>`;
+    //innerHTML은 진짜 HTML 태그로 인식하여 안에다 넣어줌. 태그가 작용해서 넣어짐.
+    //그러나 textContent나 innerText는 단순히 ''안에 있는 문자를 넣어줌.
+
+    //css속성 주기
+    const redText = document.querySelector("#red");
+    redText.style.color = 'red';
+    redText.style.backgroundColor = 'yellow';
+    //css와 문법이 다른 것 확인 -안들어감
+
+    //클래스 속성 조작하기. 여러개 css속성 주기
+    //id change라는 text에 active라는 클래스를 추가하여
+    //.active에 포함되어 있는 css주기
+    const activeTxt = document.getElementById('change');
+    const changeBtn = document.getElementById('changebtn');
+    const changeBtn2 = document.getElementById('changebtn2');
+    function getCss(){
+        activeTxt.classList.add('active');
+    }
+    function removeCss(){
+        activeTxt.classList.remove('active');
+    }
+    //버튼 클릭시 위의 함수가 실행되어 changeBtn에 active클래스가 
+    //추가됨.
+
+    changeBtn.addEventListener("click",getCss);
+    changeBtn2.addEventListener("click",removeCss);
+
+    //토글 메서드 적용
+    const toggle = document.querySelector('#toggle');
+    setInterval(function(){
+        toggle.classList.toggle("toggle_css")},1000);
+
+
+</script>
+</html>
