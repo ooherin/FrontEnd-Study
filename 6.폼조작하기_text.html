@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼조작하기</title>
+</head>
+<body>
+    <form name="frm1">
+        <input type="text">
+    </form>
+    <form name="frm2">
+        <input type="text">
+    </form>
+<br>
+<br>
+    <!--폼 요소 선택하기-->
+    <!--form하위에 목차는 라벨로 표시함-->
+    <form name = "form1">
+        <label for="uname">이름</label>
+        <input type="text" id="uname" name="uname">
+
+        <label for="age">나이</label>
+        <input type="text" id="age" name="age">
+
+        <label for="gender">성별</label>
+        <select id="gender" name="gender">
+            <option value="male">남자</option>
+            <option value="female">여자</option>
+        </select>
+        <button type="submit">전송</button>
+    </form>
+
+    <br>
+    <br>
+    <!--폼 요소의 입력값 다루기 - input -->
+    <form name="loginForm">
+        <span>id</span><input type="text" name="id">
+        <span>password</span><input type="password" name="pw">
+    </form>
+    <script>
+    console.log(document.frm1);
+    //form의 하위 노드 중에서 name값이 uname인 노드를 선택
+    console.log(document.form1.elements['uname']);
+    //form의 하위 노드 중에서 name값이 age인 노드를 선택
+    //(이게 더 쉬움 굳이 element쓸 필요가 없음)
+    console.log(document.form1.age);
+    console.log(document.form1.gender);
+
+    //폼 요소의 입력 값 다루기
+    //<<<<value>>>>
+    //해당 input의 이름을 적고 value값 가져오기
+   //콘솔에 직접
+   document.loginForm.id.value;
+   document.loginForm.pw.value;
+   //입력하면 input에 입력한 값이 나옴
+
+   //직접 input에 value를 통해 원하는 값 삽입도 가능
+    document.loginForm.id.value = 'thisisid';
+    </script>
+</body>
+
+</html>

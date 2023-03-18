@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메서드로 속성 조작하기</title>
+    <style>
+        .hide{
+            display:none;
+        }
+
+        /*setAttribute로 색상 변경*/
+        .color{
+            background-color: skyblue;
+        }
+        .color2{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!--속성조작 메서드-->
+    <!--
+        <노드>.getAttribute("속성명"); : 속성값을 가져온다
+        <노드>.setAttribute("속성명","속성값"); : 속성을 속성값으로 설정한다.
+        <노드>.removeAttribute("속성명"): 속성을 삭제한다.
+    -->
+
+    <a target= "blank" href="http://www.naver.com">네이버</a>
+    <button>구글로 전환</button>
+
+    <p>색상 변경</p>
+    <div class="color2">색상 적용 후 제거</div>
+<script>
+    const aEl = document.querySelector('a');
+    const href = aEl.getAttribute('href');
+    const btn = document.querySelector('button');
+    console.log(href); //http://www.naver.com;
+
+    function changePage(){
+    aEl.setAttribute("href","https://www.google.co.kr");
+
+    //구글로 열릴때 blank속성 추가함
+    aEl.setAttribute("target","blank");
+    btn.classList.add("hide");
+    }
+    function changeInnerTxt(){
+    //함수가 아닌 것에는 ()쓰기 말기
+    aEl.innerText = "구글";
+    changePage();
+    }
+    btn.addEventListener("click",changeInnerTxt);
+
+    //setAttribute로 색상 변경
+    const text = document.querySelector('p');
+    const text2 = document.querySelector('div');
+    text.setAttribute("class","color");
+    //class로 가지고 있던 color2의 속성이 제거되었음
+    //속성 자체를 삭제해버림
+    text2.removeAttribute("class");
+    
+    //removeAttribute로 속성 변경
+</script>
+</body>
+</html>
