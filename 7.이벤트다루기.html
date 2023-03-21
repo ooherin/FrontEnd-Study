@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--
+    이벤트 종류
+    <마우스 이벤트>
+    1.onclick : 마우스로 클릭하면 발생합니다.
+    2.ondblclick : 마우스로 더블클릭하면 발생
+    3.onmouseover : 마우스 포인터를 올리면 발생
+    4.onmouseout : 마우스 포인터가 빠져나가면 발생
+    5.onmousemove : 마우스 포인터가 움직이면 발생
+    6.onwheel : 마우스 휠을 움직이면 발생
+
+    <키보드 이벤트>
+    1. onkeypress : 키보드 버튼을 누르는 동안 발생
+    2. onkeydown : 키보드 버튼을 누른 순간 발생
+    3. onkeyup : 키보드 버튼을 눌렀다 뗀 순간 발생
+
+    <포커스 이벤트>
+    1. onfocus : 요소에 포커스가 되면 발생
+    2. onblur : 요소가 포커스를 잃으면 발생
+
+    <폼 이벤트>
+    1. submit :  폼이 전송될 때 발생
+
+    <리소스 이벤트>
+    1. onload : 웹 브라우저의 리소스 로드가 끝나면 발생
+-->
+
+<!--인라인 방식 이벤트 등록하기 on~~-->
+<button onclick="clickEvent()">클릭</button>
+
+<!--프로퍼티 리스너 방식으로 이벤트 등록하기-->
+<button id="btn1">클릭2</button>
+
+<!--이벤트 리스너 방식으로 이벤트 등록하기-->
+<button id="btn2">클릭3</button>
+<form>
+    <input type="text" onfocus="focusEvent()" onblur="blurEvent()">
+</form>
+
+<script>
+
+    //인라인 방식 이벤트 등록하기 on~~
+    function clickEvent(){
+        alert('clicked!');
+    }
+    //input에 포커스가 있거나, 빠져나오면 실행
+    function focusEvent(){
+        console.log('focus on');
+    }
+    function blurEvent(){
+        console.log('focus out');
+    }
+
+    //프로퍼티 리스너 방식으로 이벤트 등록하기-->
+    const btn1 = document.querySelector('#btn1');
+    // btn.onclick = function(){
+    //     alert('click!');
+    // }
+    btn1.onclick = () => {
+        alert('arrow click!');
+    }
+    
+    //이벤트 리스너 방식으로 이벤트 등록하기
+    const btn2 = document.querySelector('#btn2');
+    btn2.addEventListener('click',function(){
+        alert('addEventListner click!');
+    })
+</script>
+</body>
+</html>
+

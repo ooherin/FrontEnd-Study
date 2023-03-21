@@ -38,13 +38,17 @@
     const btn = document.querySelector('button');
     console.log(href); //http://www.naver.com;
 
+    //setAttribut는 속성에 속성값을 넣어주는 메소드이다.
+    //"href"선택하여 구글로 페이지 편경하는 함수.
     function changePage(){
     aEl.setAttribute("href","https://www.google.co.kr");
 
     //구글로 열릴때 blank속성 추가함
     aEl.setAttribute("target","blank");
+    //classList.add로 클래스 추가
     btn.classList.add("hide");
     }
+
     function changeInnerTxt(){
     //함수가 아닌 것에는 ()쓰기 말기
     aEl.innerText = "구글";
@@ -55,11 +59,12 @@
     //setAttribute로 색상 변경
     const text = document.querySelector('p');
     const text2 = document.querySelector('div');
+    //setAttribute로 class추가도 가능함.
     text.setAttribute("class","color");
+    
     //class로 가지고 있던 color2의 속성이 제거되었음
     //속성 자체를 삭제해버림
     text2.removeAttribute("class");
-    
     //removeAttribute로 속성 변경
 </script>
 </body>

@@ -7,10 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <button data-num="10">가방 구매</button>
-    <button data-num="0">신발 구매</button>
+    <!--data-*을 dataset으로 호출할 수 있다.-->
+    <button data-num="10" class="first">신발 구매</button>
+    <button data-num="0" class="first">가방 구매</button>
 <script>
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.first');
+
+    plusBtn.addEventListener('click',add);
+
     //dataset속성으로 data-num의 속성 정보를 가져와 출력함
     buttons.forEach((el)=>{
         console.log(el.dataset);
@@ -22,6 +26,7 @@
         console.log(el.dataset.num);
     })
     //10 0 
+
 
     //속성에 값을 할당하면 data-num값을 바꾸는 것도 가능함
     buttons.forEach((el)=>{
