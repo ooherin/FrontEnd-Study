@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .on{
+            background-color: orange;
+            color:white;
+        }
+        .room{
+            border:1px solid black;
+            height:100px;
+            width:100px;
+        }
+        .roomContainer{
+            display:flex;
+        }
+    </style>
+</head>
+<body>
+    <p>css선택자 연습</p>
+    <ul>
+        <li class="odd">하나</li>
+        <li class="even">둘</li>
+        <li class="odd">셋</li>
+        <li class="even">넷</li>
+        <li class="odd">다섯</li>
+        <li class="even">여섯</li>
+    </ul>
+    <!-- <div class="Container">
+        <div class="item">1번스위치</div>
+        <div class="item">2번스위치</div>
+        <div class="item">3번스위치</div>
+        <div class="item">4번스위치</div>
+    </div> -->
+    <div class="roomContainer">
+        <div class="room">1번방</div>
+        <div class="room">2번방</div>
+        <div class="room">3번방</div>
+        <div class="room">4번방</div>
+    </div>
+<script>
+    const $p= document.querySelector('p');
+    const $oddList = document.querySelectorAll('.odd');
+    const $evenList = document.querySelectorAll('.even');
+    const $lists = document.getElementsByTagName('li');
+
+    $p.innerHTML = `<bold>수정되었습니다.</bold>`
+
+    HTMLCollection.prototype.forEach = Array.prototype.forEach;
+    $lists.forEach(li=>(li.style.color = 
+                        li.className == 'odd'?
+                        'blue' : 'pink'))
+
+    
+    const $items = document.querySelectorAll('.item');
+    const $rooms = document.querySelectorAll('.room');
+    
+    // $rooms.forEach()
+    
+    $rooms.forEach(function(room){
+            room.addEventListener('click',function(){
+                //토글은 classList가 있으면 없애고, 없으면 생기게 한다.
+                room.classList.toggle('on');
+                // if(room.classList.contains('on')){
+                // room.classList.remove('on')}
+                // else
+                // {
+                //     room.classList.add('on');
+                // }
+            })})
+
+    $rooms.forEach()
+</script>
+</body>
+
+</html>

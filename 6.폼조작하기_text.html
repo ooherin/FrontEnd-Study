@@ -29,7 +29,7 @@
             <option value="male">남자</option>
             <option value="female">여자</option>
         </select>
-        <button type="submit">전송</button>
+        <button id="submitbtn"type="submit">전송</button>
     </form>
 
     <br>
@@ -40,24 +40,35 @@
         <span>password</span><input type="password" name="pw">
     </form>
     <script>
-    console.log(document.frm1);
-    //form의 하위 노드 중에서 name값이 uname인 노드를 선택
-    console.log(document.form1.elements['uname']);
-    //form의 하위 노드 중에서 name값이 age인 노드를 선택
-    //(이게 더 쉬움 굳이 element쓸 필요가 없음)
-    console.log(document.form1.age);
-    console.log(document.form1.gender);
+//     console.log(document.frm1);
+//     //form의 하위 노드 중에서 name값이 uname인 노드를 선택
+//     console.log(document.form1.elements['uname']);
+//     //form의 하위 노드 중에서 name값이 age인 노드를 선택
+//     //(이게 더 쉬움 굳이 element쓸 필요가 없음)
+//     console.log(document.form1.age);
+//     console.log(document.form1.gender);
 
-    //폼 요소의 입력 값 다루기
-    //<<<<value>>>>
-    //해당 input의 이름을 적고 value값 가져오기
-   //콘솔에 직접
-   document.loginForm.id.value;
-   document.loginForm.pw.value;
-   //입력하면 input에 입력한 값이 나옴
+//     //폼 요소의 입력 값 다루기
+//     //<<<<value>>>>
+//     //해당 input의 이름을 적고 value값 가져오기
+//    //콘솔에 직접
+//    document.loginForm.id.value;
+//    document.loginForm.pw.value;
+//    //입력하면 input에 입력한 값이 나옴
 
-   //직접 input에 value를 통해 원하는 값 삽입도 가능
-    document.loginForm.id.value = 'thisisid';
+//    //직접 input에 value를 통해 원하는 값 삽입도 가능
+//     document.loginForm.id.value = 'thisisid';
+//     //button누르면 
+//     //입력된 값 선택된 값 모두 콘솔에 띄우기
+function Submit(event){
+    event.preventDefault();
+    console.log(document.form1.elements['uname'].value);
+    console.log(document.form1.age.value);
+    console.log(document.form1.gender.value);
+}
+    const btn = document.getElementById('submitbtn');
+    btn.addEventListener('click',Submit);
+    
     </script>
 </body>
 

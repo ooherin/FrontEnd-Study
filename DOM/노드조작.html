@@ -1,0 +1,40 @@
+<!--DOM트리에 동적으로 객체를 삽입할 수 있다
+    createElement('태그명'), appendChild('태그객체'),
+    removeChild('태그객체삭제')-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체를 동적으로 생성,삽입,삭제</title>
+</head>
+<body>
+    <div>div생성</div>
+<script>
+    globalThis.count = 0;
+    function createDIV(){
+        const colors = ['red','orange','yellow','green','blue','violet','pink'];
+        const randomColor = colors[Math.floor(Math.random()*colors.length)];
+        const div = document.createElement('div');
+        div.innerHTML = `새로 생성된 ${++globalThis.count}번째 div입니다.`
+        div.style.backgroundColor = randomColor;
+        //div삭제 메소드 
+        div.addEventListener('click',()=>{
+            document.body.removeChild(div);
+        })
+        // div.onclick = function(){
+        //     document.body.removeChild(div);
+        // };
+        document.body.appendChild(div);
+    }
+    createDIV();
+    createDIV();
+    createDIV();
+    createDIV();
+    createDIV();
+    createDIV();
+</script>
+</body>
+</html>
