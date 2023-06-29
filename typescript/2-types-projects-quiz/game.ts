@@ -4,6 +4,7 @@
 {
   type Direction = "up" | "down" | "left" | "right";
 
+  //객체라서 const를 써도 된다.
   const position = { x: 0, y: 0 };
 
   function move(direction: Direction) {

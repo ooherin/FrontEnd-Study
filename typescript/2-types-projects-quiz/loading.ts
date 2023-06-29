@@ -28,6 +28,9 @@
     if (State.state === "success") {
       return console.log(`${State.response.body}`);
     }
+    if (State.state === "fail") {
+      return console.log(`${State.reason}`);
+    }
     return console.log(`unknown state : ${State}`);
   }
 
