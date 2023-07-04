@@ -31,6 +31,7 @@ function run() {
   }
 }
 run();
+
 //catch를 사용하면 에러를 잡은 정지되지 않는다. 다음 코드가 실행된다.
 
 // function readFile(fileName: string): string {

@@ -52,6 +52,7 @@
   };
 
   type ResultState = SuccessState | NetworkErrorState;
+
   class NetworkClient {
     tryConnect(): ResultState {
       return {
@@ -62,7 +63,6 @@
 
   class UserService {
     constructor(private client: NetworkClient) {}
-
     login() {
       this.client.tryConnect();
     }
