@@ -1,4 +1,5 @@
 {
+  //vehicle
   interface Vehicle {
     moveForward(): void;
     moveBackward(): void;

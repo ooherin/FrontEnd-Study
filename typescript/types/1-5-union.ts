@@ -13,12 +13,6 @@
   type TileSize = 8 | 16 | 32;
   const tile: TileSize = 16;
 
-  //function : login => success ,fail
-  // type Result = "success" | "fail";
-  // function login(): Result {
-  //   return;
-  // }
-
   type SuccessState = {
     response: {
       body: string;
