@@ -18,8 +18,10 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-<ErrorBoundary>
+{
+  /* <ErrorBoundary>
   <ProductListFetcher>
     <ProductListContainer />
   </ProductListFetcher>
-</ErrorBoundary>;
+</ErrorBoundary>; */
+}
