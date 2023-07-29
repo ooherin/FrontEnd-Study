@@ -5,11 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/자료구조/heap.js",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    },
+    {
       "type": "chrome",
       "request": "launch",
-      "name": "localhost에 대해 Chrome 시작",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "name": "js 디버깅",
+      "file": "${workspaceFolder}/자료구조/heap.js"
     }
   ]
 }
