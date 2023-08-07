@@ -57,6 +57,7 @@ class HashTable {
 
 //이게 핵심, 해쉬함수가 얼마나 잘 고르게 나눠주냐가 중요함
 //데이터의 분포도가 잘 되냐!
+//만약 나머지가 1,2,3에 분포된다면,.,,? -> 다른 hashF 알고리즘 필요
 function hashF(key, mod) {
   if (typeof key === "number") {
     return key % mod;
@@ -71,3 +72,5 @@ ht.insert(91, "bye");
 ht.insert(83, true);
 console.log(ht.search(61));
 console.log(ht.search(99));
+
+//
