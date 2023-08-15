@@ -3,4 +3,5 @@ export interface OneTodoItem {
   checked: boolean;
   onClick?: void;
   id: number;
+  createdTime: string;
 }

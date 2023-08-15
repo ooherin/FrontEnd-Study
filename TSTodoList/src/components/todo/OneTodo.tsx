@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import CheckBox from "./CheckBox";
-import { OneTodoItem } from "../model/Todo";
+import { OneTodoItem } from "../../model/Todo";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { BiSolidPencil } from "react-icons/bi";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 interface OneTodoProps {
   todo: OneTodoItem;
@@ -18,7 +18,7 @@ const OneTodo = ({
   onDeleteTodo,
   onSubmitEditTodo,
 }: OneTodoProps) => {
-  const { text, checked, id } = todo;
+  const { text, checked, id, createdTime } = todo;
   const [isEditMode, setIsEditMode] = useState(false);
   const [newText, setNewText] = useState("");
 
@@ -44,21 +44,20 @@ const OneTodo = ({
       ) : (
         <S.TextWrapper checked={checked}>{text}</S.TextWrapper>
       )}
-      <div style={{ position: "absolute", right: 0 }}>
+      <S.TodoInfo>
+        <div>{createdTime}</div>
         {/*수정*/}
-        <div style={{ position: "absolute", right: 30 }}>
-          {isEditMode ? (
-            <BiSolidPencil
-              size={20}
-              color="blue"
-              onClick={() => {
-                onClickEditMode();
-              }}
-            />
-          ) : (
-            <BiSolidPencil size={20} color="blue" onClick={onClickEditMode} />
-          )}
-        </div>
+        {isEditMode ? (
+          <BiSolidPencil
+            size={20}
+            color="blue"
+            onClick={() => {
+              onClickEditMode();
+            }}
+          />
+        ) : (
+          <BiSolidPencil size={20} color="blue" onClick={onClickEditMode} />
+        )}
         {/*삭제*/}
         <RiDeleteBack2Fill
           color="red"
@@ -67,7 +66,7 @@ const OneTodo = ({
             onDeleteTodo(id);
           }}
         />
-      </div>
+      </S.TodoInfo>
     </S.Wrapper>
   );
 };
@@ -95,4 +94,12 @@ const TextWrapper = styled.div<WrapperProps>`
   margin-left: 10px;
 `;
 
-const S = { Wrapper, TextWrapper };
+const TodoInfo = styled.div`
+  position: absolute;
+  right: 0;
+  display: flex;
+  width: 110px;
+  justify-content: space-between;
+`;
+
+const S = { Wrapper, TextWrapper, TodoInfo };

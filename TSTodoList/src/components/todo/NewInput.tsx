@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { OneTodoItem } from "../model/Todo";
+import { OneTodoItem } from "../../model/Todo";
 import React, { useState } from "react";
-
+import { timeHelper } from "../../utils/time-helper";
 interface NewInputProps {
   setTodos: React.Dispatch<React.SetStateAction<OneTodoItem[]>>;
   todos: OneTodoItem[];
@@ -18,6 +18,7 @@ const NewInput = ({ setTodos, todos }: NewInputProps) => {
     text: text,
     checked: false,
     id: Math.random() * 1000,
+    createdTime: timeHelper(new Date()),
   };
 
   const onSubmitTodo = (e: React.ChangeEvent<HTMLFormElement>) => {

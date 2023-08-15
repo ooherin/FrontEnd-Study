@@ -1,4 +1,3 @@
-import React from "react";
 import { RiCheckboxBlankLine, RiCheckboxBlankFill } from "react-icons/ri";
 
 interface CheckBoxProps {

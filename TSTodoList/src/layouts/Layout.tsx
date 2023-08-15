@@ -1,5 +1,5 @@
 import * as S from "./style";
-const Header = () => {
+const Layout = () => {
   return (
     <S.HeaderWrapper>
       <div
@@ -14,4 +14,4 @@ const Header = () => {
     </S.HeaderWrapper>
   );
 };
-export default Header;
+export default Layout;
