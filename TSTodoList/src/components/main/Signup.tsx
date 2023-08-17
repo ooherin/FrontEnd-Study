@@ -37,7 +37,7 @@ const SignUpForm = ({ setIsFormLogin }: SignUpFormProps) => {
 
     //백엔드 통신
     axios
-      .post("http://localhost:9000/user/sign", { email, password })
+      .post("http://localhost:8080/user/sign", { email, password })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 
