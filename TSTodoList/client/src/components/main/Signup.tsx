@@ -18,7 +18,6 @@ const SignUpForm = ({ setIsFormLogin }: SignUpFormProps) => {
   const { email, password, passwordConfirm } = value;
 
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
-  // const [disabled, error] = useValidate(email, password);
 
   useEffect(() => {
     console.log(password, passwordConfirm);
