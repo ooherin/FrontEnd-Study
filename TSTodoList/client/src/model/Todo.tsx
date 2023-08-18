@@ -1,7 +1,8 @@
 export interface OneTodoItem {
-  text: string;
-  checked: boolean;
+  content: string;
+  state: boolean;
   onClick?: void;
   id: number;
   createdTime: string;
+  title: string;
 }

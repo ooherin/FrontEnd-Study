@@ -4,48 +4,82 @@ import { OneTodoItem } from "../../model/Todo";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { BiSolidPencil } from "react-icons/bi";
 import { useState } from "react";
+import TodoApi from "../../apis/todo.api";
 
 interface OneTodoProps {
   todo: OneTodoItem;
-  onCheckBox: (id: number) => void;
   onDeleteTodo: (id: number) => void;
   onSubmitEditTodo: (id: number, text: string) => void;
+  todos: OneTodoItem[];
+  setTodos: React.Dispatch<React.SetStateAction<OneTodoItem[]>>;
+  getTodo: () => void;
 }
 
 const OneTodo = ({
   todo,
-  onCheckBox,
   onDeleteTodo,
   onSubmitEditTodo,
+  getTodo,
 }: OneTodoProps) => {
-  const { text, checked, id, createdTime } = todo;
+  const { content, title, state, id, createdTime } = todo;
   const [isEditMode, setIsEditMode] = useState(false);
   const [newText, setNewText] = useState("");
+  const [newTitleText, setNewTitleText] = useState("");
 
   const onClickEditMode = () => {
-    setNewText(text);
+    setNewText(content);
     if (isEditMode) {
       onSubmitEditTodo(id, newText);
     }
-
+    if (isEditMode) {
+    }
+    if (isEditMode) {
+      onUpdateTodo();
+    }
+    getTodo();
     setIsEditMode((prev) => !prev);
-    //만약 isEditMode가 true인 상태이면 submit까지 같이 실행함.
+    setNewText("");
+    setNewTitleText("");
+  };
+
+  const onUpdateTodo = async () => {
+    try {
+      console.log("title", newTitleText);
+      const res = await TodoApi.updateTodo(id, {
+        ...todo,
+        content: newText,
+        title: newTitleText,
+      });
+      getTodo();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const onChangeNewText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewText(e.target.value);
   };
+  const onChangeNewTitleText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTitleText(e.target.value);
+  };
 
   return (
     <S.Wrapper>
-      <CheckBox checked={checked} onCheckBox={onCheckBox} id={id} />
+      <CheckBox id={id} state={state} todo={todo} getTodo={getTodo} />
       {isEditMode ? (
-        <input value={newText} onChange={onChangeNewText} />
+        <>
+          <input value={newTitleText} onChange={onChangeNewTitleText} />
+          <input value={newText} onChange={onChangeNewText} />
+        </>
       ) : (
-        <S.TextWrapper checked={checked}>{text}</S.TextWrapper>
+        <>
+          <S.TextWrapper state={state}>{title}</S.TextWrapper>
+          <S.TextWrapper state={state}>{content}</S.TextWrapper>
+        </>
       )}
+      <div>{createdTime}</div>
       <S.TodoInfo>
-        <div>{createdTime}</div>
         {/*수정*/}
         {isEditMode ? (
           <BiSolidPencil
@@ -82,12 +116,12 @@ const Wrapper = styled.div`
 `;
 
 interface WrapperProps {
-  checked: boolean;
+  state: boolean;
 }
 
 const TextWrapper = styled.div<WrapperProps>`
-  text-decoration: ${({ checked }: { checked: boolean }) =>
-    checked ? "line-through" : "none"};
+  text-decoration: ${({ state }: { state: boolean }) =>
+    state ? "line-through" : "none"};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

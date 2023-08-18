@@ -20,7 +20,7 @@ const PrivateRoute = () => {
         // 그러나 대부분의 데이터는 사용자에게 보여주는 것이 좋습니다
       });
     }
-  }, [accessToken, navigate]);
+  }, [accessToken, navigate, pathName]);
 
   return accessToken ? <Outlet /> : <Navigate to={"/"} />;
 };

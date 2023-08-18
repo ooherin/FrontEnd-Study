@@ -12,9 +12,13 @@ const TodoApi = {
   },
 
   updateTodo(id: number, newTodo: OneTodoItem) {
-    const { title, content, state } = newTodo;
-    console.log("api title", title);
-    return axiosInstance.put(PATH + `/${id}`, { state, title, content });
+    const { title: newTitle, content, state } = newTodo;
+
+    return axiosInstance.put(PATH + `/${id}`, {
+      state,
+      title: newTitle,
+      content,
+    });
   },
 
   deleteTodo(id: number) {
