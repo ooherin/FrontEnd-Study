@@ -1,4 +1,7 @@
-import { RiCheckboxBlankLine, RiCheckboxBlankFill } from "react-icons/ri";
+import {
+  MdOutlineCheckBoxOutlineBlank,
+  MdOutlineCheckBox,
+} from "react-icons/md";
 import TodoApi from "../../apis/todo.api";
 import { OneTodoItem } from "../../model/Todo";
 
@@ -12,7 +15,6 @@ interface CheckBoxProps {
 }
 
 const CheckBox = ({ state, todo, id, getTodo }: CheckBoxProps) => {
-  console.log("check", state);
   const onCheckBox = async ({ id, todo, state }: CheckBoxProps) => {
     try {
       const res = await TodoApi.updateTodo(id, { ...todo, state: !state });
@@ -23,13 +25,13 @@ const CheckBox = ({ state, todo, id, getTodo }: CheckBoxProps) => {
     getTodo();
   };
   return state ? (
-    <RiCheckboxBlankFill
+    <MdOutlineCheckBox
       onClick={() => {
         onCheckBox({ id, todo, state, getTodo });
       }}
     />
   ) : (
-    <RiCheckboxBlankLine
+    <MdOutlineCheckBoxOutlineBlank
       onClick={() => {
         onCheckBox({ id, todo, state, getTodo });
       }}

@@ -36,31 +36,44 @@ const NewInput = ({ setTodos, todos, getTodo }: NewInputProps) => {
 
   return (
     <Wrapper onSubmit={onSubmitTodo}>
-      <Input
-        value={title}
-        placeholder="제목 입력..."
-        onChange={onChangeTitleInput}
-      />
-      <Input value={text} placeholder="할일 입력..." onChange={onChangeInput} />
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <Input
+          value={title}
+          placeholder="제목 입력..."
+          onChange={onChangeTitleInput}
+          isTitle={true}
+        />
+        <Input
+          value={text}
+          placeholder="할일 입력..."
+          onChange={onChangeInput}
+          isTitle={false}
+        />
+      </div>
       <Button>추가</Button>
     </Wrapper>
   );
 };
 export default NewInput;
 
-const Input = styled.input`
-  width: 450px;
-  height: 30px;
+type InputProps = {
+  isTitle: boolean;
+};
+const Input = styled.input<InputProps>`
+  width: 445px;
+  font-size: 15px;
   background-color: #dbdbdb;
   border: none;
+  border-bottom: ${({ isTitle }: { isTitle: boolean }) =>
+    isTitle ? "2px solid #efe8e8" : "none"};
 `;
 
 const Button = styled.button`
   width: 50px;
-  height: 30px;
+  border: none;
 `;
 
 const Wrapper = styled.form`
   display: flex;
-  width: 500px;
+  width: 100%;
 `;
