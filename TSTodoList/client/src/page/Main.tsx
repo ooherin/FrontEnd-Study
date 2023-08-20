@@ -3,6 +3,7 @@ import { useState } from "react";
 import { flexAlignCenter, flexCenter } from "../style/common";
 import SignInForm from "../components/main/SignIn";
 import SignUpForm from "../components/main/Signup";
+
 const MainPage = () => {
   const [isFormLogin, setIsFormLogin] = useState(false);
 

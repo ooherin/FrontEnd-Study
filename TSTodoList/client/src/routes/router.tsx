@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createBrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import MainPage from "../page/Main";
@@ -26,5 +25,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-// /* 기본값 */
 export default router;

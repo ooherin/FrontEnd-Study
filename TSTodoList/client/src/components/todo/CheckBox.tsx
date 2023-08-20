@@ -3,19 +3,10 @@ import {
   MdOutlineCheckBox,
 } from "react-icons/md";
 import TodoApi from "../../apis/todo.api";
-import { OneTodoItem } from "../../model/Todo";
-
-interface CheckBoxProps {
-  state?: boolean;
-  id: number;
-  todos?: OneTodoItem[];
-  todo: OneTodoItem;
-  onClick?: () => void;
-  getTodo: () => void;
-}
+import { CheckBoxProps } from "../../types/todo_type";
 
 const CheckBox = ({ state, todo, id, getTodo }: CheckBoxProps) => {
-  const onCheckBox = async ({ id, todo, state }: CheckBoxProps) => {
+  const onClickCheckBox = async ({ id, todo, state }: CheckBoxProps) => {
     try {
       const res = await TodoApi.updateTodo(id, { ...todo, state: !state });
       console.log(res);
@@ -27,13 +18,13 @@ const CheckBox = ({ state, todo, id, getTodo }: CheckBoxProps) => {
   return state ? (
     <MdOutlineCheckBox
       onClick={() => {
-        onCheckBox({ id, todo, state, getTodo });
+        onClickCheckBox({ id, todo, state, getTodo });
       }}
     />
   ) : (
     <MdOutlineCheckBoxOutlineBlank
       onClick={() => {
-        onCheckBox({ id, todo, state, getTodo });
+        onClickCheckBox({ id, todo, state, getTodo });
       }}
     />
   );

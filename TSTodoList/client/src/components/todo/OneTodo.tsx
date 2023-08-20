@@ -1,20 +1,12 @@
 import styled from "styled-components";
 import CheckBox from "./CheckBox";
-import { OneTodoItem } from "../../model/Todo";
+import { OneTodoProps } from "../../types/todo_type";
 import { TiDeleteOutline } from "react-icons/ti";
 import { BiSolidPencil } from "react-icons/bi";
 import { useState } from "react";
 import TodoApi from "../../apis/todo.api";
 import { timeHelper } from "../../utils/time-helper";
-
-interface OneTodoProps {
-  todo: OneTodoItem;
-  onDeleteTodo: (id: number) => void;
-  onSubmitEditTodo: (id: number, text: string) => void;
-  todos: OneTodoItem[];
-  setTodos: React.Dispatch<React.SetStateAction<OneTodoItem[]>>;
-  getTodo: () => void;
-}
+import useInputs from "../../hooks/use-inputs";
 
 const OneTodo = ({
   todo,
@@ -24,11 +16,14 @@ const OneTodo = ({
 }: OneTodoProps) => {
   const { content, title, state, id, createdAt } = todo;
   const [isEditMode, setIsEditMode] = useState(false);
-  const [newText, setNewText] = useState(title);
-  const [newTitleText, setNewTitleText] = useState(content);
+  const [value, onChangeForm] = useInputs({
+    newText: content,
+    newTitle: title,
+  });
+
+  const { newText, newTitle } = value;
 
   const onClickEditMode = () => {
-    setNewText(content);
     if (isEditMode) {
       onSubmitEditTodo(id, newText);
     }
@@ -46,7 +41,7 @@ const OneTodo = ({
       const res = await TodoApi.updateTodo(id, {
         ...todo,
         content: newText,
-        title: newTitleText,
+        title: newTitle,
       });
       getTodo();
       console.log(res);
@@ -55,20 +50,13 @@ const OneTodo = ({
     }
   };
 
-  const onChangeNewText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewText(e.target.value);
-  };
-  const onChangeNewTitleText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTitleText(e.target.value);
-  };
-
   return (
     <S.Wrapper state={state}>
       <CheckBox id={id} state={state} todo={todo} getTodo={getTodo} />
       {isEditMode ? (
         <div style={{ display: "flex", flexDirection: "column", width: "70%" }}>
-          <input value={newTitleText} onChange={onChangeNewTitleText} />
-          <input value={newText} onChange={onChangeNewText} />
+          <input value={newTitle} name="newTitle" onChange={onChangeForm} />
+          <input value={newText} name="newText" onChange={onChangeForm} />
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", width: "70%" }}>

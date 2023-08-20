@@ -2,12 +2,16 @@ import styled from "styled-components";
 import NewInput from "./NewInput";
 import OneTodo from "./OneTodo";
 import { OneTodoItem } from "../../model/Todo";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import TodoApi from "../../apis/todo.api";
+import { useRecoilState } from "recoil";
+import { todoListState } from "../../atom/todoState";
+
 const TodoList = () => {
   //초기값에 빈배열을 넣어주어야 undefined를 해결할 수 있다.
-  const [todos, setTodos] = useState<OneTodoItem[]>([]);
+  const [todos, setTodos] = useRecoilState(todoListState);
 
+  //초기에 저장된 todo 가져오기
   useEffect(() => {
     getTodo();
   }, []);
@@ -46,21 +50,23 @@ const TodoList = () => {
   return (
     <Wrapper>
       <TodoWrapper>
-        {todos?.map((todo: OneTodoItem) => {
-          return (
-            <OneTodo
-              todo={todo}
-              key={todo.id}
-              onDeleteTodo={onDeleteTodo}
-              onSubmitEditTodo={onSubmitEditTodo}
-              todos={todos}
-              setTodos={setTodos}
-              getTodo={getTodo}
-            />
-          );
-        })}
+        <>
+          {todos?.map((todo: OneTodoItem) => {
+            return (
+              <OneTodo
+                todo={todo}
+                key={todo.id}
+                onDeleteTodo={onDeleteTodo}
+                onSubmitEditTodo={onSubmitEditTodo}
+                todos={todos}
+                setTodos={setTodos}
+                getTodo={getTodo}
+              />
+            );
+          })}
+        </>
       </TodoWrapper>
-      <NewInput setTodos={setTodos} todos={todos} getTodo={getTodo} />
+      <NewInput getTodo={getTodo} />
     </Wrapper>
   );
 };
