@@ -1,6 +1,5 @@
-//layout js와 결합
 "use client";
-
+//layout js와 결합
 import { useRouter } from "next/navigation";
 
 export default function Create() {
