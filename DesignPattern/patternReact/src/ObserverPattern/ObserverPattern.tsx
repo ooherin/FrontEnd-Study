@@ -4,23 +4,23 @@
 type ObserverFun = (data: string) => void;
 
 class Observable {
-  #observers: ObserverFun[];
+    #observers: ObserverFun[];
 
-  constructor() {
-    this.#observers = [];
-  }
+    constructor() {
+        this.#observers = [];
+    }
 
-  subscribe(func: ObserverFun) {
-    this.#observers.push(func);
-  }
+    subscribe(func: ObserverFun) {
+        this.#observers.push(func);
+    }
 
-  unscribe(func: ObserverFun) {
-    this.#observers.filter((observer) => observer !== func);
-  }
+    unSubscribe(func: ObserverFun) {
+        this.#observers.filter((observer) => observer !== func);
+    }
 
-  notify(data: string) {
-    this.#observers.forEach((observer) => observer(data));
-  }
+    notify(data: string) {
+        this.#observers.forEach((observer) => observer(data));
+    }
 }
 
 export default new Observable();

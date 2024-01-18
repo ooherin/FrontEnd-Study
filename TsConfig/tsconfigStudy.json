@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    /*기본 옵션*/
+    "incremental": false
+  }
+}
